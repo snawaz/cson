@@ -15,7 +15,7 @@ Here the type of each attribute is statically determined during the creation of 
 ```c++
 
 x.age = "I'm a string"; //compilation error :  age is int
-++x.age;                //okay         
+x.age++;                //okay         
 x.worK = "New job";     //compilation error :  object x has no member named `worK`
 ```
 
