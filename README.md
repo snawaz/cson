@@ -51,9 +51,10 @@ int main()
 		},
 		child = cson   //nested cson object
 		(
-			name = 100,                   //now name becomes int
-			age  = "here age is string",  //age is std::string now
-			child = cson                  //yet again
+			name  = 100,                      //now name becomes int
+			age   = "here age is string",     //age is std::string now
+			items = {"Shaan", "Udit", "Sonu"},//this turns into std::vector<std::string>
+			child = cson                      //yet again
 			(
 				func = "Hi",
 				child = "Bye"
