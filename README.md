@@ -28,6 +28,7 @@ That's very intuitive.
 
 #include <cson/cson.h++>
 
+//creates few labels first
 CSON_LABEL(name);
 CSON_LABEL(age);
 CSON_LABEL(work);
