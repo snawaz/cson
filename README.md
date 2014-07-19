@@ -2,17 +2,27 @@
 C++ Simple Object Notation (CSON)
 =================================
 
-It is a library to create objects with static attributes on the fly, using notation inspired from JSON:
+CSON allows users to create objects with named type-safe attributes on the fly, using notation inspired from JSON:
+
 ```c++
 auto x = cson(name = "Rafi", age = 55, work = "Singing");
 
 std::cout << x.name << "," << x.age << "," << x.work << std::endl;
 ```
 
-Here the type of each attribute is statically determined, which means `x.name` is `std::string`, `x.age` is `int` and so on.
+Here the type of each attribute is statically determined during the creation of object &mdash; which means `x.name` is `std::string`, `x.age` is `int` and so on:
 
-Examples
-========
+```c++
+
+x.age = "I'm a string"; //error at compile time
+x.worK = "New job";     //object has no named `worK`
+```
+
+That's very intuitive. 
+
+
+###More examples
+
 ```c++
 
 #include <cson/cson.h++>
