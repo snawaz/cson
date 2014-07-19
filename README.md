@@ -26,6 +26,7 @@ That's very intuitive.
 
 ```c++
 
+#include <iostream>
 #include <cson/cson.h++>
 
 //creates few labels first
