@@ -35,6 +35,7 @@ CSON_LABEL(age);
 CSON_LABEL(work);
 CSON_LABEL(func);
 CSON_LABEL(child);
+CSON_LABEL(items);
 
 int main()
 {
@@ -43,6 +44,7 @@ int main()
 	(
 		name = "Rafi",
 		age = 55,
+		items = {1,2,3,4,5},  //this turns into a std::vector<int>
 		func = [](std::string const & name) { std::cout << ("Hello " + name)  << std::endl; },
 		child = cson   //nested cson object
 		(
