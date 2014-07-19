@@ -71,3 +71,14 @@ x[func]("Lata");  //invoke function
 std::cout << x[child][name] << std::endl; //access child attribute to print it
 	
 ```
+
+###Compilers
+
+Tested with GCC 4.8.2 with `-std=c++11`.
+
+
+###Suggestions
+
+Suggestions are most welcome. Feel free to report issues, send pull requests or suggest improvements by sending email at sir_nawaz959@yahoo.com. 
+
+
