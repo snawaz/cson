@@ -28,12 +28,23 @@ struct generic_##label \
 	   	template<typename T> \
 		label##_t<std::vector<better_t<T>>> operator=(std::initializer_list<T> items)\
 	   	{ \
-				return { std::move(items) };\
+			std::vector<better_t<T>> v; \
+			v.reserve(items.size());\
+			for(auto & item : items) v.emplace_back(std::move(item));\
+			return { std::move(v) };\
 	   	}\
 }label
 
 struct any { template<typename T> any(T &&) {} };
 using unpack = any[];
+
+template<typename T> struct better { using type = T; };
+
+template<> struct better<char *> { using type = std::string; };
+template<> struct better<char const *> { using type = std::string; };
+
+template<typename T>
+using better_t = typename better<typename std::decay<T>::type>::type;
 
 template<typename ... Ts>
 struct cson_t;
@@ -83,8 +94,10 @@ namespace details
 	    return out << "\n";;
 	}
 }
+
 template<typename ... T>
 struct typelist {};
+
 template<typename Tag, bool, typename TL>
 struct find_base_impl;
 
@@ -101,6 +114,7 @@ struct find_base
 	using type = typename find_base_impl<Tag, 
 		  Tag::template match<T>::value, typelist<T, Rest...> >::type;
 };
+
 template<typename ... Ts>
 struct cson_t : public Ts ...
 {
@@ -143,12 +157,6 @@ std::ostream& operator << (std::ostream & out, cson_t<Ts...> const  & item)
 	out << "cson"; 
    	return details::print(out, item, 0) << "\n";
 }
-
-template<typename T> struct better { using type = T; };
-template<> struct better<char *> { using type = std::string; };
-
-template<typename T>
-using better_t = typename better<typename std::decay<T>::type>::type;
 
 template<typename ... Ts>
 auto cson(Ts && ... args) -> cson_t<better_t<Ts>...>
