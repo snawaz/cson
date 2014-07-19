@@ -36,12 +36,27 @@ CSON_LABEL(child);
 
 int main()
 {
-	auto x = cson(name = "Rafi",
-		      age = 55,
-		      func = [](std::string const & name) { std::cout << ("Hello " + name)  << std::endl; },
-		      child = cson(name = 100,   //now name becomes int
-		                   age  = "here age is string",
-		                   child = cson(func = "Hi",
-		                   		child = "Bye")));
+	auto x = cson
+	(
+		name = "Rafi",
+		age = 55,
+		func = [](std::string const & name) { std::cout << ("Hello " + name)  << std::endl; },
+		child = cson
+		(
+			name = 100,   //now name becomes int
+			age  = "here age is string",
+			child = cson
+			(
+				func = "Hi",
+				child = "Bye"
+			)
+		)
+	);
+	
+	x.func("Lata");  //invoke function
+	
+	std::cout << x.child.name << std::endl; //access child attribute to print it
+	
+	std::cout << x << std::endl;  //print the entire object
 }
 ```
