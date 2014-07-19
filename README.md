@@ -45,7 +45,10 @@ int main()
 		name = "Rafi",
 		age = 55,
 		items = {1,2,3,4,5},  //this turns into a std::vector<int>
-		func = [](std::string const & name) { std::cout << ("Hello " + name)  << std::endl; },
+		func = [](std::string const & name)  //can be a functor/function/lambda also
+		{ 
+			std::cout << ("Hello " + name)  << std::endl; 
+		},
 		child = cson   //nested cson object
 		(
 			name = 100,                   //now name becomes int
