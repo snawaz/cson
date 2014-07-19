@@ -42,11 +42,11 @@ int main()
 		name = "Rafi",
 		age = 55,
 		func = [](std::string const & name) { std::cout << ("Hello " + name)  << std::endl; },
-		child = cson
+		child = cson   //nested cson object
 		(
-			name = 100,   //now name becomes int
-			age  = "here age is string",
-			child = cson
+			name = 100,                   //now name becomes int
+			age  = "here age is string",  //age is std::string now
+			child = cson                  //yet again
 			(
 				func = "Hi",
 				child = "Bye"
