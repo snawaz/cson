@@ -61,3 +61,12 @@ int main()
 	std::cout << x << std::endl;  //print the entire object
 }
 ```
+
+It is also possibe to treat the attributes as keys, so we can write as:
+```c++
+
+x[func]("Lata");  //invoke function
+	
+std::cout << x[child][name] << std::endl; //access child attribute to print it
+	
+```
