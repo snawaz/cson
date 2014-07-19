@@ -28,8 +28,20 @@ That's very intuitive.
 
 #include <cson/cson.h++>
 
+CSON_LABEL(name);
+CSON_LABEL(age);
+CSON_LABEL(work);
+CSON_LABEL(func);
+CSON_LABEL(child);
+
 int main()
 {
-	auto x = cson()
+	auto x = cson(name = "Rafi",
+		      age = 55,
+		      func = [](std::string const & name) { std::cout << ("Hello " + name)  << std::endl; },
+		      child = cson(name = 100,   //now name becomes int
+		                   age  = "here age is string",
+		                   child = cson(func = "Hi",
+		                   		child = "Bye")));
 }
 ```
