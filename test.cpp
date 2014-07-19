@@ -2,15 +2,20 @@
 #include <iostream>
 #include <cson/cson.h++>
 
+namespace test 
+{
 CSON_LABEL(name);
 CSON_LABEL(age);
 CSON_LABEL(work);
 CSON_LABEL(dict);
 CSON_LABEL(fun);
 CSON_LABEL(items);
+}
 
 int main()
 {
+	using namespace test;
+
 	auto x = cson
 	(
 	 	name = "Rafi", 
