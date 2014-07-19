@@ -36,6 +36,7 @@ CSON_LABEL(child);
 
 int main()
 {
+	//create a cson object with some attributes, even nested cson object
 	auto x = cson
 	(
 		name = "Rafi",
