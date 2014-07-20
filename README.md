@@ -79,6 +79,15 @@ std::cout << x[child][name] << std::endl; //access child attribute to print it
 	
 ```
 
+And we can even mix them:
+```c++
+
+std::cout << x.child[name] << std::endl; //access child attribute to print it
+std::cout << x[child].name << std::endl; //access child attribute to print it
+```
+
+All mean exactly same thing!
+
 ###Compilers
 
 Tested with GCC 4.8.2 with `-std=c++11`.

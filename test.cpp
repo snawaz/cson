@@ -41,6 +41,10 @@ int main()
 	std::cout << x << std::endl;
 	std::cout << x[work] << std::endl;
 
+	std::cout << x[dict][age] << std::endl;
+	std::cout << x.dict[age] << std::endl;
+	std::cout << x[dict].age << std::endl;
+
 	for(auto const & key : x.keys())
 		std::cout << "key => " << key << std::endl;
 
