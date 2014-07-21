@@ -53,7 +53,7 @@ std::ostream& operator << (std::ostream & out, cson_t<Ts...> const  & item)
 }
 
 template<typename ... Ts>
-auto cson(Ts && ... args) -> cson_t<better_t<Ts>...>
+auto cson(Ts && ... args) -> cson_t<typename std::remove_reference<Ts>::type...>
 {
-	return cson_t<better_t<Ts>...> { std::forward<Ts>(args) ... };
+	return { std::forward<Ts>(args) ... };
 }
