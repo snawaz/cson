@@ -39,34 +39,27 @@ CSON_LABEL(items);
 
 int main()
 {
-	//create a cson object with some attributes, even nested cson object
-	auto x = cson
-	(
-		name = "Rafi",
-		age = 55,
-		items = {1,2,3,4,5},  //this turns into a std::vector<int>
-		func = [](std::string const & name)  //can be a functor/function/lambda also
-		{ 
-			std::cout << ("Hello " + name)  << std::endl; 
-		},
-		child = cson   //nested cson object
-		(
-			name  = 100,                      //now name becomes int
-			age   = "here age is string",     //age is std::string now
-			items = {"Shaan", "Udit", "Sonu"},//this turns into std::vector<std::string>
-			child = cson                      //yet again
-			(
-				func = "Hi",
-				child = "Bye"
-			)
-		)
-	);
-	
-	x.func("Lata");  //invoke function
-	
-	std::cout << x.child.name << std::endl; //access child attribute to print it
-	
-	std::cout << x << std::endl;  //print the entire object
+    //create a cson object with some attributes, even nested cson object
+    auto x = cson(
+    	name = "Rafi",
+	age = 55,
+	items = {1,2,3,4,5},  //this turns into a std::vector<int>
+	func = [](std::string const & name) { //can be a functor/function/lambda also
+	    std::cout << ("Hello " + name)  << std::endl; 
+	},
+	child = cson(   //nested cson object
+	    name  = 100,                      //now name becomes int
+	    age   = "here age is string",     //age is std::string now
+	    items = {"Shaan", "Udit", "Sonu"},//this turns into std::vector<std::string>
+	    child = cson(                      //yet again
+		func = "Hi",
+		child = "Bye"
+	    )
+	)
+    );
+    x.func("Lata");  //invoke function
+    std::cout << x.child.name << std::endl; //access child attribute to print it
+    std::cout << x << std::endl;  //print the entire object
 }
 ```
 
