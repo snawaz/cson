@@ -22,7 +22,7 @@ x.worK = "New job";     //compilation error :  object x has no member named `wor
 That's very intuitive. 
 
 
-###More examples
+### More examples
 
 ```c++
 
@@ -88,12 +88,12 @@ std::cout << x[child].name << std::endl; //access child attribute to print it
 
 All mean exactly same thing!
 
-###Compilers
+### Compilers
 
 Tested with GCC 4.8.2 with `-std=c++11`.
 
 
-###Suggestions
+### Suggestions
 
 Suggestions are most welcome. Feel free to report issues, send pull requests or suggest improvements by sending email at sir_nawaz959@yahoo.com. 
 
