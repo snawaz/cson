@@ -83,7 +83,7 @@ All mean exactly same thing!
 
 ### Compilers
 
-Tested with GCC 4.8.2 with `-std=c++11`.
+Use any compiler (gcc or clang) supporting `-std=c++14`.
 
 
 ### Suggestions

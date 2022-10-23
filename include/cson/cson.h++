@@ -14,11 +14,11 @@ struct cson_t : public Ts ...
 {
 	template<typename Tag>
 	using base_type = typename find_base<Tag, Ts...>::type;
-	
+
 	template<typename Tag>
 	using value_type = typename base_type<Tag>::type;
 public:
-	
+
 	template<typename ...Args>
 	cson_t(Args && ... args) : Ts(std::forward<Args>(args)) ...
 	{
@@ -29,7 +29,7 @@ public:
 	{
 		return reinterpret_cast<value_type<Tag>&>(static_cast<base_type<Tag>&>(*this));
 	}
-	
+
 	template<typename Tag>
 	auto operator[](Tag const &) const -> value_type<Tag> const &
 	{
@@ -40,6 +40,15 @@ public:
 	{
 		return { Ts::attribute_name() ... };
 	}
+
+    // f must takes two arguments and the first argument is std::string
+    // and the second argument is generic, e.g
+    // [](std::string const & key, auto && value) { ... }
+    template<typename F>
+    auto for_each(F f) -> void {
+        (void) unpack { (f(Ts::attribute_name(), reinterpret_cast<typename Ts::type const &>(static_cast<Ts const&>(*this))), 0) ... };
+    }
+
 };
 
 template<>

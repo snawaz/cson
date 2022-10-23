@@ -39,7 +39,7 @@ namespace details
 	std::ostream& print(std::ostream & out, cson_t<Ts...> const  & item, int tab)
 	{
 		out << "\n" <<  std::string(tab, ' ') << "{\n";
-		unpack
+		(void) unpack
 		{ 
 			print_helper(out, static_cast<Ts const&>(item), tab + 4) ... 
 		};

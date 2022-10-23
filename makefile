@@ -2,4 +2,4 @@
 
 
 all:
-	g++ -std=c++11 -pedantic test.cpp -I./include
+	g++ -std=c++14 -pedantic test.cpp -I./include
