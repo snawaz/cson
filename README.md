@@ -106,8 +106,5 @@ printable_values.for_each([](std::string const & key, auto && value) {
 Use any compiler (gcc or clang) supporting `-std=c++14`.
 
 
-### Suggestions
-
-Suggestions are most welcome. Feel free to report issues, send pull requests or suggest improvements by sending email at sir_nawaz959@yahoo.com.
 
 
